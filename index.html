@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Appbar Web Component</title>
+  <script defer type="module" src="wijit-appbar.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <p>
+    <details>
+      <summary><h1>Appbar Web Component</h1></summary>
+      <p>
+        Renders an app-bar style widget. There are three available slots: "left", "center" and "right". You can assign multiple items to each slot.
+      </p>
+      <div>
+        <h3>Attributes</h3>
+        <ul>
+          <li><b>dir</b> optional (default: row) The orientation of the bar. Acceptable values are: "row", "column"</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Usage</h3>
+          <code><pre>
+            &lt;script type="module" src="wijit-appbar.js"&gt;&lt;/script&gt;
+            &lt;wijit-appbar dir="row"&gt;
+              &lt;div slot="left"&gt;Foo&lt;/div&gt;
+              &lt;div slot="center"&gt;Bar&lt;/div&gt;
+              &lt;div slot="right"&gt;Baz&lt;/div&gt;
+            &lt;/wijit-appbar&gt;
+          </pre></code>
+      </div>
+    </details>
+  </p>
+
+  <fieldset>
+    <legend>Available Attributes</legend>
+    <label>
+      dir<br>
+      <select onchange="change(event, 'dir')">
+        <option value="row">Default (row)</option>
+        <option>column</option>
+      </select>
+    </label>
+  </fieldset>
+
+  <div id="container">
+
+<!---------- Component ------------>
+    <wijit-appbar dir="row">
+      <button class="menubutton" slot="left" onclick="popup(event, '<b>The Menu</b><br><ul><li>One</li><li>Two</li><li>Three</li></ul>')">
+        <hr><hr><hr>
+      </button>
+
+      <form class="search" slot="center" onsubmit="popup(event, `<b>You Searched For:</b> ${this.search.value}`)">
+        <input type="search" name="search" placeholder="Search...">
+        <button class="searchbutton">
+          <div class="icon">
+            <span class="icona">&nbsp;</span>
+            <span class="iconb">&nbsp;</span>
+          </div>
+        </button>
+      </form>
+
+      <div class="commands" slot="right">
+        <button onclick="popup(event, '<b>You Clicked:</b> One')">One</button>
+        <button onclick="popup(event, '<b>You Clicked:</b> Two')">Two</button>
+        <button onclick="popup(event, '<b>You Clicked:</b> Three')">Three</button>
+      </div>
+    </wijit-appbar>
+<!------------ /Component ------------>
+
+  </div>
+
+  <dialog>
+    <p>Hello World!</p>
+    <form method="dialog">
+      <button>OK</button>
+    </form>
+  </dialog>
+
+  <script>
+    function change(evt, attr) {
+      const el = document.querySelector('wijit-appbar');
+      el.setAttribute(attr, evt.target.value);
+    }
+
+    function popup(evt, msg) {
+      evt.preventDefault();
+      const dialog = document.querySelector('dialog');
+      const p = dialog.querySelector('p');
+      p.innerHTML = msg;
+      dialog.showModal();
+    }
+  </script>
+
+  <script>
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach (function(mutation) {
+        if (mutation.type === "attributes") {
+          const wijit = document.querySelector('wijit-appbar');
+          if (mutation.target.style.flexDirection === 'column') {
+            wijit.style.minWidth = '0%';
+          } else {
+            wijit.style.removeProperty('min-width');
+          }
+        }
+      });
+    });
+
+    customElements.whenDefined('wijit-appbar')
+    .then (foo => {
+      const wijit = document.querySelector('wijit-appbar');
+      const container = wijit.shadowRoot.querySelector('#wrapper');
+      observer.observe(container, {attributes: true});
+
+    });
+  </script>
+</body>
+</html>
