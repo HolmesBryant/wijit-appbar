@@ -1,18 +1,21 @@
-# Text Stroke Web Component
+# Appbar Web Component
 
-Adds a text stroke to some text.
+Renders an app-bar style widget. There are three available slots:
+"left", "center" and "right". You can assign multiple items to each
+slot.
 
-Demo: https://holmesbryant.github.io/text-stroke/
+## Attributes
 
-### Attributes
-* [strokecolor] optional (default: inherit) The color of the stroke.
-* [strokewidth] optional (default: "2px") The width of the stroke.
+-   dir optional (default: row) The orientation of the bar. Acceptable
+    values are: "row" or "column"
 
-## Note:
 
-The text must be wrapped inside an HTML element (h1, p, span etc). If it is not, it will automatically be wrapped in an h1 element.
-
-### Usage
-
-    <script type="module" src="text-stroke.js"></script>
-    <text-stroke>Some Text to Stroke</text-stroke>
+<h2>Usage</h2>
+    <code>
+        <script type="module" src="wijit-appbar.js"></script>
+        <wijit-appbar dir="row">
+          <div slot="left">Foo</div>
+          <div slot="center">Bar</div>
+          <div slot="right">Baz</div>
+        </wijit-appbar>
+    </code>
