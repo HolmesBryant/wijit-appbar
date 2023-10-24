@@ -11,11 +11,11 @@ slot.
 
 
 <h2>Usage</h2>
-    <code>
-        <script type="module" src="wijit-appbar.js"></script>
-        <wijit-appbar dir="row">
-          <div slot="left">Foo</div>
-          <div slot="center">Bar</div>
-          <div slot="right">Baz</div>
-        </wijit-appbar>
-    </code>
+    <pre>
+        &lt;script type="module" src="wijit-appbar.js">&lt;/script>
+        &lt;wijit-appbar dir="row">
+          &lt;div slot="left">Foo&lt;/div>
+          &lt;div slot="center">Bar&lt;/div>
+          &lt;div slot="right">Baz&lt;/div>
+        &lt;/wijit-appbar>
+    </pre>
