@@ -6,8 +6,7 @@ slot.
 
 ## Attributes
 
--   [dir] optional (default: row) The orientation of the bar. Acceptable
-    values are: "row" or "column"
+-   [dir] optional (default: row) The orientation of the bar. Acceptable values are: "row" or "column"
 
 
 <h2>Usage</h2>

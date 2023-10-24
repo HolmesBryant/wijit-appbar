@@ -1,3 +1,19 @@
+/**
+ *  Renders an app-bar style widget
+ *
+ *  @author Holmes Bryant <webbmaastaa@gmail.com>
+ *  @license GPL-3.0
+ *
+ *  @attribute [dir] optional (default: row) The orientation of the bar. Acceptable values are: "row" or "column".
+ *
+ *  @usage
+ *  <script type="module" src="wijit-appbar.js"></script>
+ *  <wijit-appbar dir="row">
+ *    <div slot="left">Foo</div>
+ *    <div slot="center">Bar</div>
+ *    <div slot="right">Baz</div>
+ *  </wijit-appbar>
+ */
 export class WijitAppbar extends HTMLElement {
 	shadow = ShadowRoot;
 	directions = ['row', 'column'];
