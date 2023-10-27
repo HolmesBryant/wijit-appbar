@@ -4,6 +4,8 @@ Renders an app-bar style widget. There are three available slots:
 "left", "center" and "right". You can assign multiple items to each
 slot.
 
+Demo: https://holmesbryant.github.io/wijit-appbar/
+
 ## Attributes
 
 -   [dir] optional (default: row) The orientation of the bar. Acceptable values are: "row" or "column"
