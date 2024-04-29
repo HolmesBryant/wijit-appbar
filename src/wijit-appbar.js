@@ -26,6 +26,7 @@ export class WijitAppbar extends HTMLElement {
 		this.shadow.innerHTML = `
 		<style>
 			:host {
+				--direction: ${this.dir};
 				display: flex;
 				align-items: center;
 			}
@@ -33,7 +34,7 @@ export class WijitAppbar extends HTMLElement {
             #wrapper {
             	align-items: center;
 				display: flex;
-				flex-direction: ${this.dir};
+				flex-direction: var(--direction);
 				flex-wrap: wrap;
 				height: 100%;
 				justify-content: space-between;
@@ -92,8 +93,7 @@ export class WijitAppbar extends HTMLElement {
 	set dir(value) {
 		if (this.#dir !== value) {
 			this.#dir = value;
-			const wrapper = this.shadowRoot.querySelector('#wrapper');
-			wrapper.style.flexDirection = value;
+			this.style.setProperty('--direction', value);
 		}
 	}
 }
