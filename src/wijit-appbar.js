@@ -98,4 +98,8 @@ export class WijitAppbar extends HTMLElement {
 	}
 }
 
-document.addEventListener('DOMContentLoaded', customElements.define('wijit-appbar', WijitAppbar));
+document.addEventListener('DOMContentLoaded', () => {
+	if (!customElements.get('wijit-appbar')) {
+		customElements.define('wijit-appbar', WijitAppbar);
+	}
+});
